@@ -1,0 +1,41 @@
+<div fxLayout="column" fxLayoutGap="10px">
+  <div fxFlex=20 id="search" fxFill fxLayoutAlign="space-around center">
+    <form [formGroup]="form" (ngSubmit)="searchMovies(form.value)">
+      <mat-form-field appearance="fill">
+        <mat-label>Search movie</mat-label>
+        <input matInput formControlName="movie" type="text" name="searchText" placeholder="Search Movies Here"
+          #movieSearchInput>
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+      <mat-error *ngIf="form.get('movie').hasError('minlength')">
+        Input should be at least 3 characters long.
+      </mat-error>
+      <mat-error *ngIf="form.get('movie').hasError('pattern')">
+        Input must be alphanumeric
+      </mat-error>
+    </form>
+  </div>
+
+  <!--Search Result Area-->
+  <div [ngClass]="{ 'layout-wrapper': (empty === 0) }">
+    <div [ngClass]="{'hide': empty === 0, 'layout-result' : (empty === 1)}">
+      <h1 class="text-info"> Results for "{{ searchkey }}"</h1>
+      <hr>
+      <h3 class="text-info">{{ totalResults }} movies found.</h3>
+      <hr>
+      <div fxLayout="row wrap" fxLayoutAlign = "space-betweenstart stretch" fxLayoutGap="5px" class="main-container"  flex-xs="100" flex-sm="50" flex-md="50" flex="33">
+        
+          <div *ngFor="let movie of movies" fxFlex.lg="20" fxFlex.md="30" fxFlex.xs="80">
+            <app-moviecard [movie]="movie"></app-moviecard>
+          </div>
+        </div>
+    
+
+      <div fxLayout="row" fxLayoutAlign="center" style="padding:10px">
+        <button mat-raised-button (click)="loadMore()" *ngIf="movies.length < totalResults">
+          Next page
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

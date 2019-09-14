@@ -1,0 +1,44 @@
+<!-- <div class="row" >
+    <div class="col-md-4 d-flex align-items-center">
+      <img 
+        [class]="movie.poster_path ? 'img-thumbnail' : 'img-fluid'"
+        [src]="movie.poster_path ? ('https://image.tmdb.org/t/p/w500' + movie.poster_path) : '../../../assets/images/not-found.png'" 
+        [alt]="movie.title">
+    </div>
+    <div class="col-md-8">
+      <dl class="movie">
+        <dt>{{ 'movie.title' }}</dt>
+        <dd>{{ movie.title }}</dd>
+        <dt>{{ 'movie.average' }}</dt>
+        <dd>{{ movie.vote_average }}</dd>
+      </dl>
+      <button 
+        class="btn btn-sm btn-info"
+        [routerLink]="['movie-detail', movie.id]">
+       + {{ 'movie.info' }}
+      </button>
+    </div>
+  </div> -->
+
+  <mat-card class="movie-card">
+    <mat-card-header>
+      <div mat-card-avatar class="movie-image"></div>
+      <mat-card-title class="titlecls">{{ movie.title }}</mat-card-title>
+      <mat-card-subtitle>{{ movie.vote_average }}</mat-card-subtitle>
+    </mat-card-header>
+    <div class="poster-wrap">
+      <div class="card_image_div">
+        <img mat-card-image [class]="movie.poster_path ? 'img-thumbnail' : 'img-fluid'"
+          [src]="movie.poster_path ? ('https://image.tmdb.org/t/p/w500' + movie.poster_path) : '../../../assets/images/not-found.png'"
+          [alt]="movie.title"></div>
+    </div>
+
+    <mat-card-content>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button [routerLink]="['movie-detail', movie.id]">
+        + {{ 'movie.info' }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
