@@ -1,11 +1,8 @@
 .movie-card {
-    margin-bottom: 70px;
+    margin-bottom: 50px;
+    margin: 10px;
 }
 
-.movie-image {
-  background-size: cover;
-  background-image: url("https://myrealdomain.com/images/movies-icon-5.png");
-}
 
 mat-card img {
   object-fit: contain;
@@ -15,10 +12,10 @@ mat-card img {
 }
 
 .titlecls {
-  font-size: 18px;
+  font-size: 20px;
   margin-top: 10px;
   overflow: hidden;
-  max-width: 125px;
+  max-width: 300px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -35,3 +32,25 @@ mat-card img {
     width: 100%;
     cursor: pointer;
 }
+
+.mat-card-actions {
+    margin-left: -8px;
+    margin-right: -8px;
+    padding: 0px 0;
+}
+
+::ng-deep .mat-card-header{
+    justify-content: center; 
+}
+
+/deep/ .mat-card-header-text {
+    width: 100%;
+    text-align: center;
+    margin: 0 0px;  
+}
+
+/deep/ .mat-card-subtitle{
+    display: inline-flex!important;
+    align-items: center!important;
+    margin-bottom: 0px!important;
+ }

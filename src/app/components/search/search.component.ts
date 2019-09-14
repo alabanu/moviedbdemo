@@ -19,7 +19,7 @@ export class SearchComponent implements OnInit {
   totalPages: number;
   totalResults: number;
   empty: number = 0;
- 
+  regularDistribution = 100 / 6 + '%';
 
   @ViewChild('movieSearchInput') movieSearchInput: ElementRef;
 

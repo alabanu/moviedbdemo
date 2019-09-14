@@ -20,9 +20,9 @@
 }
 
 .layout-wrapper {
-  height: 100vh;
+  height: 81vh;
   background-image: url("/assets/images/back-min.jpg");
-  background-size: cover;
+  background-size: contain;
 }
 
 .clear-layout {
@@ -46,8 +46,14 @@
 }
 
 .text-info {
-  color: #5827b0;
   margin-left: 10px;
+  color: #9c27b0;
+}
+
+.nextbtn {
+  display: inline-block;
+  width: 100%;
+  padding: inherit;
 }
 
 .main-container {

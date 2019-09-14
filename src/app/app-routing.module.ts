@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
 import { CollectionsComponent } from './components/collections/collections.component';
-import { SearchdetailsComponent } from './components/search/searchdetails/searchdetails.component';
+import { MoviedetailsComponent } from './components/moviecard/moviedetails/moviedetails.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,7 +17,7 @@ const routes: Routes = [
     component: CollectionsComponent
   },
   { path: 'search/:text', component: SearchComponent },
-  { path: 'search/:text/movie-detail/:id', component: SearchdetailsComponent },
+  { path: 'search/:text/movie-detail/:id', component: MoviedetailsComponent },
 
 ];
 @NgModule({

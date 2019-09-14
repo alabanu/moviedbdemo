@@ -1,45 +1,31 @@
-<section class="mb-4" id="detalhes"  *ngIf="detail">
-    <h1 class="text-info">{{ detail.title }}</h1>
-    <hr>
-    <div class="row">
-      <div class="col-sm-4">
-        <img class="img-thumbnail" [src]="'https://image.tmdb.org/t/p/w500' + detail.poster_path" [alt]="detail.title">
-      </div>
-      <div class="col-sm-8">
-        <dl class="movie">
-          <dt>{{ 'movie.overview'  }}</dt>
-          <dd>{{ detail.overview }}</dd>
-          <dt>{{ 'movie.averageVote'  }}</dt>
-          <dd><span class="badge badge-pill badge-secondary voteAverage">{{ detail.vote_average * 10 }}%</span></dd>
-          <dt>{{ 'movie.count'  }}</dt>
-          <dd>{{ detail.vote_count }}</dd>
-          <dt>{{ 'movie.release'  }}</dt>
-          <dd>{{ detail.release_date | date: 'longDate' }}</dd>
-          <dt>{{ 'movie.languages'  }}</dt>
-          <dd>
-            <ul class="list-unstyled">
-              <li class="badge badge-pill badge-info mr-2 " *ngFor="let lang of detail.spoken_languages">
-                {{ lang.name }}
-              </li>
-            </ul>
-          </dd>
-          <dt>{{ 'movie.budget'  }}</dt>
-          <dd>{{ detail.budget | currency }}</dd>
-          <dt>{{ 'movie.revenue'  }}</dt>
-          <dd>{{ detail.revenue | currency }}</dd>
-        </dl>
-        <button 
-          class="btn btn-sm btn-outline-info"
-          (click)="addFavorite()"
-          *ngIf="!favorite">
-          {{ 'movie.addFavorite' }}
-        </button>
-        <button 
-          class="btn btn-sm btn-outline-info"
-          (click)="removeFavorite()"
-          *ngIf="favorite">
-          {{ 'movie.removeFavorite' }}
-        </button>
-      </div>
-    </div>
-  </section>
+<div *ngIf="detail">
+  <h1>{{ detail.title }}</h1>
+  <hr>
+  <div>
+
+    <img class="img-thumbnail" [src]="'https://image.tmdb.org/t/p/w500' + detail.poster_path" [alt]="detail.title">
+
+    <dl class="movie">
+      <dt>{{ 'movie.overview'  }}</dt>
+      <dd>{{ detail.overview }}</dd>
+      <dt>{{ 'movie.averageVote'  }}</dt>
+      <dd><span class="badge badge-pill badge-secondary voteAverage">{{ detail.vote_average * 10 }}%</span></dd>
+      <dt>{{ 'movie.count'  }}</dt>
+      <dd>{{ detail.vote_count }}</dd>
+      <dt>{{ 'movie.release'  }}</dt>
+      <dd>{{ detail.release_date | date: 'longDate' }}</dd>
+      <dt>{{ 'movie.languages'  }}</dt>
+      <dd>
+        <ul class="list-unstyled">
+          <li class="badge badge-pill badge-info mr-2 " *ngFor="let lang of detail.spoken_languages">
+            {{ lang.name }}
+          </li>
+        </ul>
+      </dd>
+      <dt>{{ 'movie.budget'  }}</dt>
+      <dd>{{ detail.budget | currency }}</dd>
+      <dt>{{ 'movie.revenue'  }}</dt>
+      <dd>{{ detail.revenue | currency }}</dd>
+    </dl>
+  </div>
+</div>
