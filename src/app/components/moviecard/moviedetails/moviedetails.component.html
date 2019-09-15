@@ -10,7 +10,8 @@
         <div fxFlex="100%">
           <div fxFlex fxLayout="row" fxLayoutAlign="space-around center">
             <div fxFlex="30%">
-              <img class="img-thumbnail" [src]="'https://image.tmdb.org/t/p/w500' + detail.poster_path"
+              <img class="img-thumbnail"
+                [src]="detail.poster_path ? ('https://image.tmdb.org/t/p/w500' + detail.poster_path) : '../../../assets/images/not-found.png'"
                 [alt]="detail.title">
             </div>
             <div fxFlex="50%">
@@ -50,8 +51,7 @@
             <bar-rating formControlName="rating" [rate]=detail.vote_average [showText]="true" [max]="10" required>
             </bar-rating>
             <button mat-raised-button color="primary" class="submitbtn" (click)="close()">Submit</button>
-            <mat-spinner   style="margin:0 auto;"
-             *ngIf = "loading === true" strokeWidth="3" [diameter]="50"></mat-spinner>
+            <mat-spinner style="margin:0 auto;" *ngIf="loading === true" strokeWidth="3" [diameter]="50"></mat-spinner>
           </form>
         </mat-card-content>
       </mat-card>

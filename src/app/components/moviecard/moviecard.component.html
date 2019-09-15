@@ -10,9 +10,10 @@
   </mat-card-header>
   <div class="poster-wrap">
     <div class="card_image_div">
-      <img mat-card-image [class]="movie.poster_path ? 'img-thumbnail' : 'img-fluid'"
+      <img mat-card-image 
         [src]="movie.poster_path ? ('https://image.tmdb.org/t/p/w500' + movie.poster_path) : '../../../assets/images/not-found.png'"
-        [alt]="movie.title"></div>
+        [alt]="movie.title" 
+        [class]="movie.poster_path ? 'img-thumbnail' : 'img-fluid'"></div>
   </div>
   <mat-card-content>
   </mat-card-content>

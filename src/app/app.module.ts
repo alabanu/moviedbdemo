@@ -6,11 +6,9 @@ import { AppComponent } from './app.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
-import { MaterialModule } from './material/material.module';
 import { SearchComponent } from './components/search/search.component';
 import { CollectionsComponent } from './components/collections/collections.component';
 import { MatButtonModule, MatFormFieldModule, MatInputModule,  MatIconModule, MatCardModule,  MatDialogModule, MatDividerModule,  MatToolbarModule, MatChipsModule, MatSnackBarModule, MatProgressSpinnerModule, MatSpinner} from '@angular/material';
-import { MaterialtRoutingModule } from './material/material-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RequestInterceptor } from './services/request.interceptor';
@@ -37,13 +35,11 @@ import {GoTopButtonModule} from 'ng2-go-top-button';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    // MaterialModule,
     BrowserModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MaterialtRoutingModule,
     FlexLayoutModule,
     FormsModule, 
     ReactiveFormsModule,
