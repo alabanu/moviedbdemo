@@ -10,3 +10,4 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - ~~implement sticky header~~
 - ~~scrolling to top~~
 - ~~loading until vote submitted~~
+- ~~CORS problem solved by adding Chrome addon~~
