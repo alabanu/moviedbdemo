@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Remaining Tasks
 
--responsive mobile issue
--if input not correct disable submit search
--change url when opening dialog 
+- responsive mobile issue
+- if input not correct disable submit search
+- change url when opening dialog 
 - implement sticky header
