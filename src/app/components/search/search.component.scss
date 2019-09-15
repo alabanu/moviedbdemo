@@ -22,9 +22,13 @@ $primary-color: #673ab7;
   }
 }
 .layout-wrapper {
-  height: 81vh;
-  background-image: url("/assets/images/back-min.jpg");
-  background-size: contain;
+
+//   background-image: url("/assets/images/back-min.jpg");
+//   background-size: contain;
+  height: 100vh;
+  background-image: url(/assets/images/back-min.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .clear-layout {
@@ -41,7 +45,7 @@ $primary-color: #673ab7;
 
 .layout-result {
   border: 5px solid $primary-color;
-  background: #fafafa;
+  background: #f6f6f6;
   border-radius: 0.5em;
   margin-right: 15px;
   margin-left: 15px;

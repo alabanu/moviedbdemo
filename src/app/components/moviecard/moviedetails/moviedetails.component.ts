@@ -55,15 +55,12 @@ export class MoviedetailsComponent implements OnInit {
 
   close() {
     this.loading = true;
-    console.log("rating//" + this.ratingForm.controls['rating'].value);
     this.vote(this.detail.id, this.ratingForm.controls['rating'].value);
   }
 
   vote(movie_id, vote) {
-    console.log(vote + movie_id);
     this._movieService.getSessionId().subscribe(data => {
       this.session = data;
-      console.log(this.session.success);
       if (this.session.success == true) {
         this.postRating(this.session.guest_session_id, movie_id, vote)
       }

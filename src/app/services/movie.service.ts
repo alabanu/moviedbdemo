@@ -34,7 +34,6 @@ export class MovieService {
   }
 
   postRating(movie_id, guest_id, value): Observable<any> {
-    console.log(movie_id + "//" + guest_id + '//' + value);
     const httpOptions = {
       headers: new HttpHeaders({
         "Access-Control-Allow-Origin": "*",

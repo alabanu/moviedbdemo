@@ -1,5 +1,5 @@
 <div fxLayout="column">
-  <div fxFlex=20 id="search" fxFill fxLayoutAlign="space-around center">
+  <div fxFlex=20% id="search" fxLayoutAlign="center center">
     <form [formGroup]="form" (ngSubmit)="searchMovies(form.value)" (keydown.enter)="$event.preventDefault()">
       <mat-form-field appearance="fill">
         <mat-label>Search movie</mat-label>
@@ -17,27 +17,24 @@
   </div>
 
   <!--Search Result Area-->
-  <div [ngClass]="{ 'layout-wrapper': (empty === 0) }">
-    <div [ngClass]="{'hide': empty === 0, 'layout-result' : (empty === 1)}">
-      <div color="primary">
-        <h1 class="text-info" color="primary"> Results for "{{ searchkey }}"</h1>
-        <mat-divider></mat-divider>
-        <h3 class="text-info" color="primary">{{ totalResults }} movies found.</h3>
-      </div>
-      <div fxLayout="row wrap" fxLayout.xs="column wrap">
-        <div fxFlex.xs="100%" fxFlex.gt-xs="50%" fxFlex.gt-sm="33.33%" [fxFlex.gt-md]="regularDistribution"
-          *ngFor="let movie of movies">
-          <app-moviecard [movie]="movie"></app-moviecard>
-        </div>
-      </div>
-
-
-      <div fxLayout="row" fxLayoutAlign="center" style="padding:10px">
-        <button mat-raised-button color="accent" (click)="loadMore()" *ngIf="movies.length < totalResults"
-          class="nextbtn">
-          Next page
-        </button>
+  <div [ngClass]="{'hide': empty === 0, 'layout-result' : (empty === 1)}">
+    <div color="primary">
+      <h1 class="text-info" color="primary"> Results for "{{ searchkey }}"</h1>
+      <mat-divider></mat-divider>
+      <h3 class="text-info" color="primary">{{ totalResults }} movies found.</h3>
+    </div>
+    <div fxLayout="row wrap" fxLayout.xs="column">
+      <div fxFlex.gt-xs="50%" fxFlex.gt-sm="33.33%" [fxFlex.gt-md]="regularDistribution" *ngFor="let movie of movies">
+        <app-moviecard [movie]="movie"></app-moviecard>
       </div>
     </div>
+    <div fxLayout="row" fxLayoutAlign="center" style="padding:10px">
+      <button mat-raised-button color="accent" (click)="loadMore()" *ngIf="movies.length < totalResults"
+        class="nextbtn">
+        Next page
+      </button>
+    </div>
+  </div>
+  <div fxflex=80% fxLayoutAlign="center center" [ngClass]="{'hide': empty === 1, 'layout-wrapper' : (empty === 0)}">
   </div>
 </div>

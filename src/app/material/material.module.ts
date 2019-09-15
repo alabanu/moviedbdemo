@@ -16,16 +16,16 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     // CollectionsComponent
   ],
   imports: [
-    CommonModule,
-    MatFormFieldModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MaterialtRoutingModule,
-    FlexLayoutModule,
+    // CommonModule,
+    // MatFormFieldModule,
+    // BrowserModule,
+    // BrowserAnimationsModule,
+    // MatButtonModule,
+    // MatFormFieldModule,
+    // MatInputModule,
+    // MatIconModule,
+    // MaterialtRoutingModule,
+    // FlexLayoutModule,
   ],
  
 })
