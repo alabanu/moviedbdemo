@@ -9,3 +9,4 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - ~~if input not correct disable submit search~~
 - ~~implement sticky header~~
 - ~~scrolling to top~~
+- ~~loading until vote submitted~~

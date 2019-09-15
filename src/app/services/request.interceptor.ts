@@ -6,30 +6,30 @@ import { retry, catchError } from 'rxjs/operators';
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor {
 
-    constructor() { }
+  constructor() { }
 
-    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        const newRequest = request.clone({
-            setParams: {
-                api_key: '85204a8cc33baf447559fb6d51b18313',
-                language:  'en-US' 
-            }
+    const newRequest = request.clone({
+      setParams: {
+        api_key: '85204a8cc33baf447559fb6d51b18313',
+        language: 'en-US'
+      }
+    })
+    return next.handle(newRequest)
+      .pipe(
+        retry(1),
+        catchError((error: HttpErrorResponse) => {
+          let errorMessage = '';
+          if (error.error instanceof ErrorEvent) {
+            errorMessage = `Error: ${error.error.message}`;
+          } else {
+            errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+          }
+          return throwError(errorMessage);
         })
-        return next.handle(newRequest)
-        .pipe(
-            retry(1),
-            catchError((error: HttpErrorResponse) => {
-              let errorMessage = '';
-              if (error.error instanceof ErrorEvent) {
-                errorMessage = `Error: ${error.error.message}`;
-              } else {
-                errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-              }
-              return throwError(errorMessage);
-            })
-          )
+      )
 
-    }
+  }
 
 }

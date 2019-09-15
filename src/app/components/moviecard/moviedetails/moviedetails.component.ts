@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Input, Inject, Pipe } from '@angular/core';
 import { MovieService } from 'src/app/services/movie.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
@@ -7,6 +7,8 @@ import { Movie } from '../../../models/movie';
 import { Session } from '../../../models/session';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+
+
 @Component({
   selector: 'app-moviedetails',
   templateUrl: './moviedetails.component.html',
@@ -14,13 +16,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class MoviedetailsComponent implements OnInit {
 
+  
   @Input() detail: Movie
   id: number;
   @Input() session: Session
   ratingForm: FormGroup;
+  loading: Boolean =  false;
 
-  
-  constructor(private _movieService: MovieService, private _snackBar: MatSnackBar,private fb: FormBuilder,
+  constructor(private _movieService: MovieService, private _snackBar: MatSnackBar, private fb: FormBuilder,
     private route: ActivatedRoute, private dialogRef: MatDialogRef<MoviedetailsComponent>,
     @Inject(MAT_DIALOG_DATA) data) { this.id = data.id }
 
@@ -35,24 +38,25 @@ export class MoviedetailsComponent implements OnInit {
     })
   }
 
+  //forcing fixed rating to solve issue multiple of 0.50 WS
   getDetail() {
     this._movieService.getMovieDetail(this.id).pipe(take(1))
       .subscribe(data => {
         this.detail = data;
         this.ratingForm.patchValue({
-          rating: !!this.detail.vote_average ? this.detail.vote_average : '',
+          rating: !!this.detail.vote_average ? this.detail.vote_average.toFixed(0) : '',
         })
       }
-      ,error => {
-        this.openSnackbar(error, 'error');
-      });
+        , error => {
+          this.openSnackbar(error, 'error');
+        });
   }
 
 
   close() {
-    console.log("rating//"+this.ratingForm.controls['rating'].value);
+    this.loading = true;
+    console.log("rating//" + this.ratingForm.controls['rating'].value);
     this.vote(this.detail.id, this.ratingForm.controls['rating'].value);
-    this.dialogRef.close();
   }
 
   vote(movie_id, vote) {
@@ -67,15 +71,17 @@ export class MoviedetailsComponent implements OnInit {
   }
 
   postRating(session_id, movie_id, vote_value) {
-   
+
     this._movieService.postRating(movie_id, session_id, vote_value).pipe(take(1))
       .subscribe(data => {
         this.detail = data;
+        this.loading = false;
+        this.dialogRef.close();
         this.openSnackbar('Thanks for voting!', 'success');
       }
-      ,error => {
-        this.openSnackbar(error, 'error');
-      });
+        , error => {
+          this.openSnackbar(error, 'error');
+        });
   }
 
   openSnackbar(msg, action) {

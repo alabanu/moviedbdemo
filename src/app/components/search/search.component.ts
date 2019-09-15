@@ -36,14 +36,14 @@ export class SearchComponent implements OnInit {
     this.onKeyUp();
   }
 
-  onKeyUp(){
+  onKeyUp() {
 
     fromEvent(this.movieSearchInput.nativeElement, 'keyup').pipe(
       map((event: any) => {
         this.empty = 1;
         return event.target.value;
       })
-      ,filter(res => res.length > 2)
+      , filter(res => res.length > 2)
       // Time in milliseconds between key events
       , debounceTime(1000)
       // If previous query is diffent from current   

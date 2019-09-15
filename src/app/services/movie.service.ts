@@ -34,15 +34,15 @@ export class MovieService {
   }
 
   postRating(movie_id, guest_id, value): Observable<any> {
-    console.log(movie_id +"//" + guest_id  +'//'+ value);
+    console.log(movie_id + "//" + guest_id + '//' + value);
     const httpOptions = {
       headers: new HttpHeaders({
-        "Access-Control-Allow-Origin":  "*",
+        "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-        "Access-Control-Allow-Headers":  "Access-Control-Allow-Headers, Origin, X-Requested-With, Content-Type, Accept, Authorization",
+        "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Origin, X-Requested-With, Content-Type, Accept, Authorization",
       })
     };
-  
-    return this.http.post(this.url + "/movie/" + movie_id + "/rating" +"?&guest_session_id=" + guest_id , {value}, httpOptions)
+
+    return this.http.post(this.url + "/movie/" + movie_id + "/rating" + "?&guest_session_id=" + guest_id, { value  }, httpOptions)
   }
 }

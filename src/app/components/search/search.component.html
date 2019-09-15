@@ -1,6 +1,6 @@
 <div fxLayout="column">
   <div fxFlex=20 id="search" fxFill fxLayoutAlign="space-around center">
-    <form [formGroup]="form" (ngSubmit)="searchMovies(form.value)" (keydown.enter)="$event.preventDefault()" >
+    <form [formGroup]="form" (ngSubmit)="searchMovies(form.value)" (keydown.enter)="$event.preventDefault()">
       <mat-form-field appearance="fill">
         <mat-label>Search movie</mat-label>
         <input matInput formControlName="movie" type="text" name="searchText" placeholder="Search Movies Here"
@@ -25,7 +25,8 @@
         <h3 class="text-info" color="primary">{{ totalResults }} movies found.</h3>
       </div>
       <div fxLayout="row wrap" fxLayout.xs="column wrap">
-        <div fxFlex.xs="100%"  fxFlex.gt-xs="50%"  fxFlex.gt-sm="33.33%"  [fxFlex.gt-md]="regularDistribution" *ngFor="let movie of movies">
+        <div fxFlex.xs="100%" fxFlex.gt-xs="50%" fxFlex.gt-sm="33.33%" [fxFlex.gt-md]="regularDistribution"
+          *ngFor="let movie of movies">
           <app-moviecard [movie]="movie"></app-moviecard>
         </div>
       </div>

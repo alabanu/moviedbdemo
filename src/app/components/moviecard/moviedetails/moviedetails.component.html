@@ -47,8 +47,11 @@
         <mat-card-content style=" display: inline-block; 
         width: 100%;">
           <form [formGroup]="ratingForm">
-            <bar-rating formControlName="rating" [rate]=detail.vote_average [showText]="true" [max]="10"  required></bar-rating>
+            <bar-rating formControlName="rating" [rate]=detail.vote_average [showText]="true" [max]="10" required>
+            </bar-rating>
             <button mat-raised-button color="primary" class="submitbtn" (click)="close()">Submit</button>
+            <mat-spinner   style="margin:0 auto;"
+             *ngIf = "loading === true" strokeWidth="3" [diameter]="50"></mat-spinner>
           </form>
         </mat-card-content>
       </mat-card>
