@@ -1,4 +1,6 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~ngx-bar-rating/themes/br-default-theme";
+@import "~ngx-bar-rating/themes/br-movie-theme";
 
 body {
   margin: 0;
@@ -6,11 +8,10 @@ body {
   font-family: Roboto, sans-serif;
 }
 
-
 .img-thumbnail {
-  padding: .25rem;
+  padding: 0.25rem;
   background-color: #fff;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   max-width: 100%;
   height: auto;
 }
@@ -21,5 +22,23 @@ body {
 }
 
 .mat-dialog-container {
-   padding: 0px!important;
+  padding: 0px !important;
+}
+
+.br {
+  padding: 10px;
+
+  .br-units {
+    float: left;
+  }
+
+  .br-unit {
+  }
+  .br-text {
+    margin-right: 5px;
+    font-size: 23px;
+    height: 18px;
+    width: 18px;
+    float: left;
+  }
 }

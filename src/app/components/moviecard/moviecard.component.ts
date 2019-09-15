@@ -9,11 +9,7 @@ import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
 })
 export class MoviecardComponent implements OnInit {
 
-
-  movieState: string = 'ready'
-
   @Input() movie: any
-
 
   constructor(public dialog: MatDialog) { }
 
@@ -21,16 +17,14 @@ export class MoviecardComponent implements OnInit {
   }
 
   openDialog(id: number): void {
-    console.log("**************" + id);
     let dialogRef = this.dialog.open(MoviedetailsComponent, {
       height: '80%',
       width: '60%',
+      disableClose: true,
       data: { id }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // this.animal = result;
     });
   }
 }

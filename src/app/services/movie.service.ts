@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders, } from '@angular/common/http';
 import { Movie } from '../models/movie';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -9,7 +9,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class MovieService {
- 
+
+
+
   url: string = environment.api;
 
   constructor(private http: HttpClient) { }
@@ -20,33 +22,31 @@ export class MovieService {
     if (page) {
       params = params.append('page', page);
     }
-    return this.http.get(`${this.url}/search/movie`, { params: params })
+    return this.http.get(this.url + "/search/movie", { params: params })
   }
 
   getMovieDetail(movie_id): Observable<any> {
-    return this.http.get(`${this.url}/movie/${movie_id}`)
+    return this.http.get(this.url + "/movie/" + movie_id)
   }
 
-  // searchMovies(query: string) {
-  // return this.http.get(`${this.baseUrl}/search/movie${this.getParams({ query: query })}`)
-  //   .pipe(map((res: any) => <Movie[]>res.results));
-  // this.searchMoviesByKeyWords(query);
-  // }
+  getSessionId(): Observable<any> {
+    return this.http.get(this.url + "/authentication/guest_session/new")
+  }
 
-  // searchMoviesByKeyWords(query) {
-  //   this.movieService.searchEntries(query).subscribe(res => {
-  //     this.results = res.results;
-  //   });
-
-  // searchMovies(keyword: string) {
-  //   return this._jsonp.get('https://api.themoviedb.org/3/search/movie?callback=JSONP_CALLBACK&query=' + 
-  //   keyword + '&sort_by=popularity.desc&api_key=' + this.apiKey)
-  //     .map(res => res.json());
-  // }
-
-  // searchEntries(keywords: Observable<string>) {
-  //   return keywords.debounceTime(400)
-  //                   .distinctUntilChanged()
-  //                     .switchMap(keyword => this.searchMovies(keyword));
-  // }
+  postRating(movie_id, guest_id, value): Observable<any> {
+    console.log(movie_id +"//" + guest_id  +'//'+ value);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Access-Control-Allow-Origin":  "*",
+        "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+        "Access-Control-Allow-Headers":  "Access-Control-Allow-Headers, Origin, X-Requested-With, Content-Type, Accept, Authorization",
+      })
+    };
+  
+    // const query = new HttpParams();
+    // query.set('guest_session_id', guest_id);
+    const params = new URLSearchParams();
+    params.set('guest_session_id',  guest_id);
+    return this.http.post(this.url + "/movie/" + movie_id + "/rating" +"?&guest_session_id=" + guest_id , {value}, httpOptions)
+  }
 }

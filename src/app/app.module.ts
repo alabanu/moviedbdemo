@@ -9,7 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { MaterialModule } from './material/material.module';
 import { SearchComponent } from './components/search/search.component';
 import { CollectionsComponent } from './components/collections/collections.component';
-import { MatButtonModule, MatFormFieldModule, MatInputModule,  MatIconModule, MatCardModule,  MatDialogModule, MatDividerModule,  MatToolbarModule, MatChipsModule} from '@angular/material';
+import { MatButtonModule, MatFormFieldModule, MatInputModule,  MatIconModule, MatCardModule,  MatDialogModule, MatDividerModule,  MatToolbarModule, MatChipsModule, MatSnackBarModule} from '@angular/material';
 import { MaterialtRoutingModule } from './material/material-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -18,6 +18,7 @@ import { MovieService } from './services/movie.service';
 import { MoviecardComponent } from './components/moviecard/moviecard.component';
 import { MoviedetailsComponent } from './components/moviecard/moviedetails/moviedetails.component';
 import { RouterModule } from '@angular/router';
+import { BarRatingModule } from "ngx-bar-rating";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MaterialModule,
+    // MaterialModule,
     BrowserModule,
     MatButtonModule,
     MatFormFieldModule,
@@ -48,7 +49,9 @@ import { RouterModule } from '@angular/router';
     MatDialogModule,
     MatDividerModule,
     MatToolbarModule,
-    MatChipsModule
+    MatChipsModule,
+    BarRatingModule,
+    MatSnackBarModule
   ],
   exports: [RouterModule],
   entryComponents: [MoviedetailsComponent],

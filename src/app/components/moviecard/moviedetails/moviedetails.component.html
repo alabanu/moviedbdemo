@@ -4,38 +4,54 @@
     <h1>{{ detail.title }}</h1>
   </mat-toolbar>
   <mat-divider></mat-divider>
-
-  <div fxLayout="row">
-    <div fxFlex="100%">
-      <div fxFlex fxLayout="row"  fxLayoutAlign="space-around center">
-        <div fxFlex="30%">
-          <img class="img-thumbnail" [src]="'https://image.tmdb.org/t/p/w500' + detail.poster_path"
-            [alt]="detail.title">
-        </div>
-        <div fxFlex="50%">
-          <mat-card>
-            <h3>{{ 'Overview' }}</h3>
-            <p align = "justify">{{ detail.overview }}</p>
-            <h3>{{ 'Average vote'  }}</h3>
-            <mat-chip>
-              <span class="badge badge-pill badge-secondary voteAverage">{{ detail.vote_average * 10 }}%</span>
-            </mat-chip>
-            <h3>{{ 'Number of votes'  }}</h3>
-            <mat-chip> {{ detail.vote_count }}</mat-chip>
-            <h3>{{ 'Release date'  }}</h3>
-            <mat-chip> {{ detail.release_date | date: 'longDate' }}</mat-chip>
-            <h3>{{ 'Spoken languages'  }}</h3>
-            <mat-chip-list>
-              <mat-chip *ngFor="let lang of detail.spoken_languages"> {{ lang.name }}</mat-chip>
-            </mat-chip-list>
-            <h3>{{ 'Budget'  }}</h3>
-            <mat-chip> {{ detail.budget | currency }}</mat-chip>
-            <h3>{{ 'Revenue'  }}</h3>
-            <mat-chip>{{ detail.revenue | currency }}</mat-chip>
-          </mat-card>
+  <mat-card>
+    <mat-card-content>
+      <div fxLayout="row">
+        <div fxFlex="100%">
+          <div fxFlex fxLayout="row" fxLayoutAlign="space-around center">
+            <div fxFlex="30%">
+              <img class="img-thumbnail" [src]="'https://image.tmdb.org/t/p/w500' + detail.poster_path"
+                [alt]="detail.title">
+            </div>
+            <div fxFlex="50%">
+              <mat-card>
+                <mat-card-content>
+                  <h3>{{ 'Overview' }}</h3>
+                  <p align="justify">{{ detail.overview }}</p>
+                  <h3>{{ 'Average vote'  }}</h3>
+                  <mat-chip>
+                    <span class="badge badge-pill badge-secondary voteAverage">{{ detail.vote_average * 10 }}%</span>
+                  </mat-chip>
+                  <h3>{{ 'Number of votes'  }}</h3>
+                  <mat-chip> {{ detail.vote_count }}</mat-chip>
+                  <h3>{{ 'Release date'  }}</h3>
+                  <mat-chip> {{ detail.release_date | date: 'longDate' }}</mat-chip>
+                  <h3>{{ 'Spoken languages'  }}</h3>
+                  <mat-chip-list>
+                    <mat-chip *ngFor="let lang of detail.spoken_languages"> {{ lang.name }}</mat-chip>
+                  </mat-chip-list>
+                  <h3>{{ 'Budget'  }}</h3>
+                  <mat-chip> {{ detail.budget | currency }}</mat-chip>
+                  <h3>{{ 'Revenue'  }}</h3>
+                  <mat-chip>{{ detail.revenue | currency }}</mat-chip>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-
+    </mat-card-content>
+    <mat-card-footer>
+      <mat-card>
+        <mat-toolbar color="accent">How would you rate "{{ detail.title }}"?</mat-toolbar>
+        <mat-card-content style=" display: inline-block; 
+        width: 100%;">
+          <form [formGroup]="ratingForm">
+            <bar-rating formControlName="rating" [rate]=detail.vote_average [showText]="true" [max]="10"  required></bar-rating>
+            <button mat-raised-button color="primary" class="submitbtn" (click)="close()">Submit</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </mat-card-footer>
+  </mat-card>
 </div>
