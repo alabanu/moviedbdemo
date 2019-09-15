@@ -21,7 +21,7 @@
     <div [ngClass]="{'hide': empty === 0, 'layout-result' : (empty === 1)}">
       <div color="primary">
         <h1 class="text-info" color="primary"> Results for "{{ searchkey }}"</h1>
-        <hr>
+        <mat-divider></mat-divider>
         <h3 class="text-info" color="primary">{{ totalResults }} movies found.</h3>
       </div>
       <!-- <div fxLayout="row wrap" fxLayoutAlign="space-around" class="main-container">

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MovieService } from 'src/app/services/movie.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-moviedetails',
@@ -23,7 +24,7 @@ export class MoviedetailsComponent implements OnInit {
   }
 
   getDetail(){
-    this._movieService.getMovieDetail(this.id).subscribe(data => {
+    this._movieService.getMovieDetail(this.id).pipe(take(1)).subscribe(data => {
       this.detail = data;
     });
   }

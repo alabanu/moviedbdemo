@@ -23,8 +23,8 @@ export class MoviecardComponent implements OnInit {
   openDialog(id: number): void {
     console.log("**************" + id);
     let dialogRef = this.dialog.open(MoviedetailsComponent, {
-      height: '60%',
-      width: '50%',
+      height: '80%',
+      width: '60%',
       data: { id }
     });
 

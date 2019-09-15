@@ -9,7 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { MaterialModule } from './material/material.module';
 import { SearchComponent } from './components/search/search.component';
 import { CollectionsComponent } from './components/collections/collections.component';
-import { MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, MatCardModule, MatButtonBase, MatDialogModule } from '@angular/material';
+import { MatButtonModule, MatFormFieldModule, MatInputModule,  MatIconModule, MatCardModule,  MatDialogModule, MatDividerModule,  MatToolbarModule, MatChipsModule} from '@angular/material';
 import { MaterialtRoutingModule } from './material/material-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -45,7 +45,10 @@ import { RouterModule } from '@angular/router';
     FormsModule, 
     ReactiveFormsModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDividerModule,
+    MatToolbarModule,
+    MatChipsModule
   ],
   exports: [RouterModule],
   entryComponents: [MoviedetailsComponent],
