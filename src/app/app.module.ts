@@ -19,6 +19,8 @@ import { MoviecardComponent } from './components/moviecard/moviecard.component';
 import { MoviedetailsComponent } from './components/moviecard/moviedetails/moviedetails.component';
 import { RouterModule } from '@angular/router';
 import { BarRatingModule } from "ngx-bar-rating";
+import {GoTopButtonModule} from 'ng2-go-top-button';
+
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { BarRatingModule } from "ngx-bar-rating";
     MatToolbarModule,
     MatChipsModule,
     BarRatingModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    GoTopButtonModule
   ],
   exports: [RouterModule],
   entryComponents: [MoviedetailsComponent],

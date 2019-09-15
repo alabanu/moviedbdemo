@@ -3,4 +3,13 @@
   <div class="container">
     <router-outlet></router-outlet>
   </div>
+  <go-top-button style="text-align:right;z-index: 99999;
+  margin-top: -145px;" [animate]="true" [speed]="50" [acceleration]="2" [scrollDistance]="300"
+    [classNames]="'scroll-class'" [styles]="{
+                    'text-align': 'right'
+                 }">
+    <button mat-fab color="warn">
+      <mat-icon>keyboard_arrow_up</mat-icon>
+    </button>
+  </go-top-button>
 </div>

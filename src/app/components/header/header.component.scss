@@ -1,13 +1,22 @@
-.button-row{
-    text-align: center;
-    background: #9c27b0;
-    padding: 20px 0px 20px 0px;
+$primary-color: #673ab7;
+.button-row {
+  text-align: center;
+  background: $primary-color;
+  padding: 20px 0px 20px 0px;
 }
 
-.btn-link{
-    color: white;
-    margin-left: 10px;
-    margin-right: 10px;
-    border: 1px solid;
-    font-size: 16px;
+.btn-link {
+  color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 1px solid;
+  font-size: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
 }

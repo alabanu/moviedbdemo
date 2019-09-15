@@ -2,6 +2,9 @@
 @import "~ngx-bar-rating/themes/br-default-theme";
 @import "~ngx-bar-rating/themes/br-movie-theme";
 
+
+$primary-color: #673ab7;
+
 body {
   margin: 0;
   padding: 0;
@@ -39,4 +42,14 @@ body {
     width: 18px;
     float: left;
   }
+}
+
+.mat-fab.mat-warn, .mat-flat-button.mat-warn, .mat-mini-fab.mat-warn, .mat-raised-button.mat-warn {
+  background-color: #CCC;
+}
+
+.scroll-class{
+  border:none;
+  background:none;
+  text-align:right;
 }

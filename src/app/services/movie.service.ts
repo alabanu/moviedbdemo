@@ -43,10 +43,6 @@ export class MovieService {
       })
     };
   
-    // const query = new HttpParams();
-    // query.set('guest_session_id', guest_id);
-    const params = new URLSearchParams();
-    params.set('guest_session_id',  guest_id);
     return this.http.post(this.url + "/movie/" + movie_id + "/rating" +"?&guest_session_id=" + guest_id , {value}, httpOptions)
   }
 }

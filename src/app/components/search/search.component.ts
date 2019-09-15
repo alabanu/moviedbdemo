@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MovieService } from 'src/app/services/movie.service';
 import { Router } from '@angular/router';
 import { Subject, fromEvent } from 'rxjs';
-import { debounceTime, map, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, map, distinctUntilChanged, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',
@@ -26,21 +26,26 @@ export class SearchComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private router: Router, private _movieService: MovieService) { }
 
   ngOnInit() {
-    
+
     this.form = this.formBuilder.group({
       movie: this.formBuilder.control('', [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z]+')])
     });
 
     this.router.navigate(['/search', this.form.controls['movie'].value]);
 
+    this.onKeyUp();
+  }
+
+  onKeyUp(){
+
     fromEvent(this.movieSearchInput.nativeElement, 'keyup').pipe(
-      // get value
       map((event: any) => {
         this.empty = 1;
         return event.target.value;
       })
+      ,filter(res => res.length > 2)
       // Time in milliseconds between key events
-      , debounceTime(800)
+      , debounceTime(1000)
       // If previous query is diffent from current   
       , distinctUntilChanged()
       // subscription for response
@@ -53,22 +58,20 @@ export class SearchComponent implements OnInit {
         this.totalResults = data.total_results
       });
     });
-   
-  }
-
-  searchMovies(form) {
-    this.empty = 1;
-    this.router.navigate(['/search', this.form.controls['movie'].value])
-    console.log(this.form.value);
-
-    this._movieService.searchMovies(this.form.controls['movie'].value).subscribe(data => {
-      this.movies = data.results
-      this.page = data.page
-      this.totalPages = data.total_pages
-      this.totalResults = data.total_results
-    });
 
   }
+
+  // searchMovies(form) {
+  //   this.empty = 1;
+  //   this.router.navigate(['/search', this.form.controls['movie'].value])
+  //   this._movieService.searchMovies(this.form.controls['movie'].value).subscribe(data => {
+  //     this.movies = data.results
+  //     this.page = data.page
+  //     this.totalPages = data.total_pages
+  //     this.totalResults = data.total_results
+  //   });
+
+  // }
 
   loadMore() {
     this._movieService.searchMovies(this.form.controls['movie'].value, this.page + 1).subscribe(data => {
